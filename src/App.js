@@ -10,8 +10,11 @@ function App() {
   }
 
   const addTask = ()=> {
-    const newTodolist = [...todolist,newtask]
-    setTodolist(newTodolist)
+    const task = {
+      id: todolist.length ===0 ? 1: todolist[todolist.length-1].id+1,
+      taskName : newtask,
+    };
+    setTodolist([...todolist,task])
   }
 
   const deleteTask = (taskName) =>{
@@ -24,7 +27,7 @@ function App() {
       {todolist.map((task)=>{
         return(
           <div>
-            {task}
+            {task.taskName}
             <button onClick={() =>deleteTask (task)}>Delete</button>
           </div>
         )
